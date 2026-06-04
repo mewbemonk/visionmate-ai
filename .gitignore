@@ -1,0 +1,84 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+.env/
+.venv/
+
+# Environment Variables
+.env
+.env.*
+
+# Streamlit
+.streamlit/secrets.toml
+
+# OpenRouter / API Keys
+config.py
+secrets.py
+
+# Context Memory
+context.txt
+
+# Logs
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# Model Files
+*.pt
+*.pth
+*.ckpt
+*.onnx
+
+# Whisper Downloads
+.cache/
+models/
+
+# Temporary Files
+temp/
+tmp/
+*.tmp
+
+# Audio Files
+*.wav
+*.mp3
+*.ogg
+
+# Images
+*.png
+*.jpg
+*.jpeg
+
+# OCR Outputs
+ocr_output.txt
+
+# Test Files
+test.py
+tests/
+
+# Coverage
+.coverage
+htmlcov/
+
+# Local Databases
+*.db
+*.sqlite3
