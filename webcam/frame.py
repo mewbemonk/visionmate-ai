@@ -83,4 +83,3 @@ def webcam():
     cv2.destroyAllWindows()
 
 
-webcam()

@@ -1,11 +1,8 @@
 import streamlit as st
 
-from webcam.frame import webcam
 from memory.context import get_context
 from agents.questions_agent import questions
 from agents.search_agent import search_agent
-from speech_to_text.listen import listen
-from text_to_speech.pyttsx import voice
 
 
 st.set_page_config(
@@ -27,7 +24,7 @@ if "messages" not in st.session_state:
 
 st.title("🤖 VisionMate AI")
 st.caption(
-    "Scan objects • Understand products • Ask questions by voice"
+    "Scan objects • Understand products • Ask questions using voice"
 )
 
 st.divider()
@@ -52,14 +49,22 @@ with left:
     ):
 
         with st.spinner(
+            "Loading OCR..."
+        ):
+
+            from webcam.frame import webcam
+
+        with st.spinner(
             "Scanning object..."
         ):
 
             webcam()
 
         st.success(
-            "Object scanned successfully."
+            "Object scanned successfully!"
         )
+
+        st.rerun()
 
 # =======================
 # RIGHT PANEL
@@ -67,7 +72,9 @@ with left:
 
 with right:
 
-    st.subheader("🧠 Detected Information")
+    st.subheader(
+        "🧠 Detected Information"
+    )
 
     context = get_context()
 
@@ -90,6 +97,13 @@ if st.button(
     "Ask By Voice",
     use_container_width=True
 ):
+
+    with st.spinner(
+        "Loading Speech Model..."
+    ):
+
+        from speech_to_text.listen import listen
+        from text_to_speech.pyttsx import voice
 
     with st.spinner(
         "Listening..."
@@ -129,6 +143,8 @@ if st.button(
 
     voice(answer)
 
+    st.rerun()
+
 # -----------------------
 # Conversation
 # -----------------------
@@ -137,6 +153,10 @@ st.subheader("💬 Conversation")
 
 for msg in st.session_state.messages:
 
-    with st.chat_message(msg["role"]):
+    with st.chat_message(
+        msg["role"]
+    ):
 
-        st.write(msg["content"])
+        st.write(
+            msg["content"]
+        )
